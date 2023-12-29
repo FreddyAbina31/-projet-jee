@@ -11,7 +11,7 @@ import javax.inject.Named;
 
 import projet.commun.dto.DtoCompte;
 import projet.commun.exception.ExceptionValidation;
-import projet.commun.service.IServiceUtilisateur;
+import projet.commun.service.IServiceCompte;
 import projet.jsf.data.Compte;
 import projet.jsf.data.mapper.IMapper;
 import projet.jsf.util.UtilJsf;
@@ -30,7 +30,7 @@ public class ModelCompte implements Serializable {
 	private Compte			courant;
 	
 	@EJB
-	private IServiceUtilisateur	serviceCompte;
+	private IServiceCompte	serviceCompte;
 	
 	@Inject
 	private IMapper			mapper;
