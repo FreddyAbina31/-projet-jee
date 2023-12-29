@@ -1,11 +1,11 @@
 package projet.commun.service;
 
-import projet.commun.dto.DtoUtilisateur;
+import projet.commun.dto.DtoCompte;
 
 
 public interface IServiceConnexion {
 
-	DtoUtilisateur	sessionUtilisateurOuvrir( String pseudo, String motDePasse );
+	DtoCompte	sessionUtilisateurOuvrir( String pseudo, String motDePasse );
 
 	void		sessionUtilisateurFermer();
 

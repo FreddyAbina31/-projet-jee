@@ -7,9 +7,9 @@ import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.inject.Inject;
 
-import projet.commun.dto.DtoUtilisateur;
+import projet.commun.dto.DtoCompte;
 import projet.commun.service.IServiceConnexion;
-import projet.ejb.dao.IDaoUtilisateur;
+import projet.ejb.dao.IDaoCompte;
 import projet.ejb.data.mapper.IMapperEjb;
 
 @Stateless
@@ -17,18 +17,17 @@ import projet.ejb.data.mapper.IMapperEjb;
 public class ServiceConnexion implements IServiceConnexion {
 
 	// Champs
-	@SuppressWarnings("cdi-ambiguous-dependency")
 	@Inject
 	private IMapperEjb mapper;
 	@Inject
-	private IDaoUtilisateur daoUtilisateur;
+	private IDaoCompte daoCompte;
 
 	// Actions
 
 	@Override
 	@TransactionAttribute(NOT_SUPPORTED)
-	public DtoUtilisateur sessionUtilisateurOuvrir(String pseudo, String motDePasse) {
-		DtoUtilisateur compte = mapper.map(daoUtilisateur.validerAuthentification(pseudo, motDePasse));
+	public DtoCompte sessionUtilisateurOuvrir(String pseudo, String motDePasse) {
+		DtoCompte compte = mapper.map(daoCompte.validerAuthentification(pseudo, motDePasse));
 		return compte;
 	}
 
