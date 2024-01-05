@@ -12,7 +12,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
-import projet.jsf.util.CompteActif;
+import projet.jsf.util.UtilisateurActif;
 import projet.jsf.util.UtilJsf;
 
 @WebFilter(dispatcherTypes = {
@@ -24,7 +24,7 @@ public class Filter1Pages implements Filter {
 
 	
 	@Inject
-	private CompteActif		compteActif;
+	private UtilisateurActif		compteActif;
 	
 
 	public void destroy() {

@@ -12,11 +12,12 @@
 	<h:form>
 
 		<h:dataTable styleClass="liste" 
-			value="#{modelCompte.liste}" var="item" 
+			value="#{modelUtilisateur.liste}" var="item" 
 			rowClasses="impair, pair" columnClasses="left,left,center"
 		>
 			<h:column>
 				<f:facet name="header">
+				
 					<h:outputText value="Psudo" />
 				</f:facet>
 				#{item.pseudo}
@@ -26,7 +27,7 @@
 				<f:facet name="header">
 					<h:outputText value="Rôles" />
 				</f:facet>
-				<ui:repeat value="#{item.roles}" var="role" varStatus="status" >
+				<ui:repeat value="#{item.role}" var="role" varStatus="status" >
 					#{utilAppli.getLibelléDeRole(role)}#{not status.last ? ', ' : ''}
 				</ui:repeat>
 			</h:column>
@@ -41,7 +42,7 @@
 					title="Modifier" 
 					styleClass="image-action"
 				/>
-				<h:commandButton action="#{modelCompte.supprimer(item)}" 
+				<h:commandButton action="#{modelUtilisateur.supprimer(item)}" 
 					value="Supprimer" 
 					onclick="return confirm('Confirmez-vous la suppression ?')" 
 					image="#{ resource['images:supprimer.png'] }" 

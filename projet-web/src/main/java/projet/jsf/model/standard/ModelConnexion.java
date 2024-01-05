@@ -5,11 +5,11 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import projet.commun.dto.DtoCompte;
+import projet.commun.dto.DtoUtilisateur;
 import projet.commun.service.IServiceConnexion;
-import projet.jsf.data.Compte;
+import projet.jsf.data.Utilisateur;
 import projet.jsf.data.mapper.IMapper;
-import projet.jsf.util.CompteActif;
+import projet.jsf.util.UtilisateurActif;
 import projet.jsf.util.UtilJsf;
 
 
@@ -19,10 +19,10 @@ public class ModelConnexion {
 
 	// Champs
 
-	private Compte			courant;
+	private Utilisateur			courant;
 
 	@Inject
-	private CompteActif		compteActif;
+	private UtilisateurActif		compteActif;
 	@Inject
 	private ModelInfo		modelInfo;
 	@EJB
@@ -33,9 +33,9 @@ public class ModelConnexion {
 
 	// Getters 
 	
-	public Compte getCourant() {
+	public Utilisateur getCourant() {
 		if ( courant == null ) {
-			courant = new Compte();
+			courant = new Utilisateur();
 		}
 		return courant;
 	}
@@ -45,7 +45,7 @@ public class ModelConnexion {
 	
 	public String connect() {
 	    
-	    DtoCompte dto = serviceConnexion.sessionUtilisateurOuvrir( courant.getPseudo(), courant.getMotDePasse() );
+	    DtoUtilisateur dto = serviceConnexion.sessionUtilisateurOuvrir( courant.getPseudo(), courant.getMotdepasse() );
 	    
 	    if ( dto != null ){
 	    	

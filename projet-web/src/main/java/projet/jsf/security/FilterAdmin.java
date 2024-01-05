@@ -12,7 +12,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
-import projet.jsf.util.CompteActif;
+import projet.jsf.util.UtilisateurActif;
 import projet.jsf.util.UtilJsf;
 
 @WebFilter(
@@ -28,7 +28,7 @@ public class FilterAdmin implements Filter {
 	// Champs
 	
 	@Inject
-	private CompteActif		compteActif;
+	private UtilisateurActif		utilisateurActif;
 	
 
 	public void destroy() {
@@ -37,7 +37,7 @@ public class FilterAdmin implements Filter {
 	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
-		if ( compteActif.isAdmininstrateur() ) {
+		if ( utilisateurActif.isGestionnaire() ) {
 	        // si OK, on traite l'URL normalement
 	        chain.doFilter(request, response);
 	    } else {
