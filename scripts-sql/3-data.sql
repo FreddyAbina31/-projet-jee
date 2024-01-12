@@ -2,27 +2,29 @@ SET search_path TO projet;
 
 
 -- Supprime toutes les données
-DELETE FROM role;
-DELETE FROM compte;
+DELETE FROM Banque;
+DELETE FROM Utilisateur;
+DELETE FROM Produit;
+DELETE FROM Mouvement;
+DELETE FROM Enchere;
+DELETE FROM Utilisateur_enchere;
 
 
 -- Insère les données
 
 -- Compte
 
-INSERT INTO compte (idcompte, pseudo, motdepasse, email ) VALUES 
-( 1, 'geek', 'geek', 'geek@jfox.fr' ),
-( 2, 'chef', 'chef', 'chef@jfox.fr' ),
-( 3, 'job', 'job', 'job@jfox.fr' );
+INSERT INTO Banque (id, solde, nom ) VALUES 
+( 1, 200, 'BiguissBaque' );
 
-ALTER TABLE compte ALTER COLUMN idcompte RESTART WITH 4;
+ALTER TABLE Banque ALTER COLUMN id RESTART WITH 2;
 
 
--- Role
+-- Utilisateur
 
-INSERT INTO role (idcompte, role) VALUES 
-( 1, 'ADMINISTRATEUR' ),
-( 1, 'UTILISATEUR' ),
-( 2, 'UTILISATEUR' ),
-( 3, 'UTILISATEUR' );
+INSERT INTO Utilisateur (id, nom, prenom, email,pseudo, Motdepasse, Role, Credit, id_banque ) VALUES 
+( 1, 'geek', 'geek', 'geek@jfox.fr','geek','geek','gestionnaire',200, 1 );
+
+ALTER TABLE Utilisateur ALTER COLUMN id RESTART WITH 2;
+
  

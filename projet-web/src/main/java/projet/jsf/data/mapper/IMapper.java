@@ -1,5 +1,7 @@
 package projet.jsf.data.mapper;
 
+import java.util.List;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 
@@ -56,6 +58,8 @@ public interface IMapper {
 	Mouvement duplicate(Mouvement source);
 
 	Mouvement update(@MappingTarget Mouvement target, Mouvement source);
+	
+	List<Mouvement> duplicate( List<Mouvement> source );
 
 	// Produit
 
