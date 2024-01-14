@@ -22,7 +22,7 @@ public class ModelConnexion {
 	private Utilisateur			courant;
 
 	@Inject
-	private UtilisateurActif		compteActif;
+	private UtilisateurActif		utilisateurActif;
 	@Inject
 	private ModelInfo		modelInfo;
 	@EJB
@@ -56,10 +56,10 @@ public class ModelConnexion {
 //				throw new RuntimeException( e );
 //			}
 
-	        mapper.update(compteActif, mapper.map(dto) );
+	        mapper.update(utilisateurActif, mapper.map(dto) );
 	        
 	    	modelInfo.setTitre( "Bienvenue" );
-	    	modelInfo.setTexte( "Vous êtes connecté en tant que '" + compteActif.getPseudo() +"'.");
+	    	modelInfo.setTexte( "Vous êtes connecté en tant que '" + utilisateurActif.getPseudo() +"'.");
 		    return "info";
 
 	    } else {

@@ -46,4 +46,16 @@ public class DaoMouvement implements IDaoMouvement{
 		return query.getResultList();
 	}
 
+	@Override
+	public void supprimer(int idMouvement) {
+		// TODO Auto-generated method stub
+		
+	}
+//
+//	@Override
+//	public void modifier(Mouvement mouvement) {
+//		// TODO Auto-generated method stub
+//		
+//	}
+
 }

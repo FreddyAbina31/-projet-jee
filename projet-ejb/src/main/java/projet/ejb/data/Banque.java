@@ -21,7 +21,7 @@ public class Banque {
 	private BigDecimal solde;
 
 	// bi-directional many-to-one association to Utilisateur
-	@OneToMany(mappedBy = "banque")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "banque")
 	private List<Utilisateur> utilisateurs;
 
 	public Banque() {

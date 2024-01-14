@@ -4,17 +4,16 @@
  <navigation-rule>
   <from-view-id>*</from-view-id>
   <navigation-case>
-   <from-outcome>connexion</from-outcome>
-   <to-view-id>/connexion.xhtml</to-view-id>
-   <redirect/>
-  </navigation-case>
-  <navigation-case>
    <from-outcome>comptes</from-outcome>
    <to-view-id>/pages/admin/Utilisateur/liste.xhtml</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>info</from-outcome>
    <to-view-id>/pages/info.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>connexion</from-outcome>
+   <to-view-id>/connexion.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
  <application/>

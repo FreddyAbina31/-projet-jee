@@ -8,9 +8,11 @@ public interface IDaoMouvement {
 
 	int			inserer( Mouvement mouvement );
 
-//	void 		supprimer( int idMouvement );
+	void 		supprimer( int idMouvement );
 
 	Mouvement 	retrouver( int idMouvement );
 
 	List<Mouvement> listerTout();
+
+//	void modifier(Mouvement mouvement);
 }
