@@ -44,7 +44,7 @@ public class ModelConnexion {
 	// Actons
 	
 	public String connect() {
-	    
+	    System.out.println(courant.getPseudo() + "###########################################" + courant.getMotdepasse());
 	    DtoUtilisateur dto = serviceConnexion.sessionUtilisateurOuvrir( courant.getPseudo(), courant.getMotdepasse() );
 	    
 	    if ( dto != null ){
