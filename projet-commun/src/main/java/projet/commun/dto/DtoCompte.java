@@ -21,7 +21,6 @@ public class DtoCompte implements Serializable  {
 	
 	private List<String> roles = new ArrayList<>();
 	
-	
 	// Constructeurs
 	
 	public DtoCompte() {
@@ -77,7 +76,6 @@ public class DtoCompte implements Serializable  {
 		this.roles = roles;
 	}
 
-	
 	public boolean isInRole( String role ) {
 		
 		if ( role != null ) {

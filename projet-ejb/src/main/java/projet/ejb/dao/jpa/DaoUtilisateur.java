@@ -51,7 +51,7 @@ public class DaoUtilisateur implements IDaoUtilisateur {
 	@TransactionAttribute( NOT_SUPPORTED )
 	public List<Utilisateur> listerTout() {
 		em.clear();
-		var jpql = "SELECT u FROM Utilisateur u ORDER BY u.pseudo";
+		var jpql = "SELECT u FROM Utilisateur u ORDER BY u.nom";
 		var query = em.createQuery(jpql, Utilisateur.class);
 		return query.getResultList();
 	}

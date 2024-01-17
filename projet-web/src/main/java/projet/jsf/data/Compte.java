@@ -31,7 +31,6 @@ public class Compte implements Serializable  {
 	private String		email;
 	
 	private List<String> roles = new ArrayList<>();	
-
 	
 	// Constructeurs
 	
@@ -89,7 +88,6 @@ public class Compte implements Serializable  {
 		this.roles = roles;
 	}
 
-	
 	public boolean isInRole( String role ) {
 		return roles.contains( role );
 	}

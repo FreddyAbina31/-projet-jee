@@ -12,7 +12,7 @@
 	<h:form>
 
 		<h:dataTable styleClass="liste" 
-			value="#{modelUtilisateur.liste}" var="item" 
+			value="#{modelCompte.liste}" var="item" 
 			rowClasses="impair, pair" columnClasses="left,left,center"
 		>
 			<h:column>
@@ -27,7 +27,7 @@
 				<f:facet name="header">
 					<h:outputText value="Rôles" />
 				</f:facet>
-				<ui:repeat value="#{item.role}" var="role" varStatus="status" >
+				<ui:repeat value="#{item.roles}" var="role" varStatus="status" >
 					#{utilAppli.getLibelléDeRole(role)}#{not status.last ? ', ' : ''}
 				</ui:repeat>
 			</h:column>

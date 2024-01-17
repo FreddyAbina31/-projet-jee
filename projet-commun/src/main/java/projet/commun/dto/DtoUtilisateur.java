@@ -129,5 +129,4 @@ public class DtoUtilisateur implements Serializable {
 	public void setEncheres(List<DtoEnchere> encheres) {
 		this.encheres = encheres;
 	}
-
 }
