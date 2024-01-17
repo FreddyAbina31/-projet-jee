@@ -8,6 +8,7 @@ DELETE FROM Role;
 DELETE FROM Compte;
 
 
+<<<<<<< HEAD
 -- Ajouter des données à la table Compte
 INSERT INTO Compte (Pseudo, MotDePasse, Email) VALUES
   ('user1', 'user1', 'user1@3il.com'),
@@ -25,6 +26,31 @@ INSERT INTO Banque (solde, nom) VALUES
   (1000.00, 'Banque1'),
   (2000.00, 'Banque2'),
   (3000.00, 'Banque3');
+=======
+-- Insère les données
+
+DELETE FROM Produit;
+DELETE FROM Mouvement;
+DELETE FROM Enchere;
+DELETE FROM Utilisateur_enchere;
+
+
+-- Insère les données
+
+
+
+
+
+
+
+ 
+-- Données pour la table Banque
+INSERT INTO Banque (solde, nom) VALUES
+(1000.00, 'BNP Paribas'),
+(500.00, 'Crédit Agricole'),
+(100.00, 'BiguissBaque' );
+ALTER TABLE Banque ALTER COLUMN id RESTART WITH 4;
+>>>>>>> 0cb71fd2697a4c3723e2c79989f0b4526f1a631d
 
 -- Ajouter des données à la table Utilisateur
 INSERT INTO Utilisateur (Nom, Prenom, Email, Motdepasse, Credit, id_banque) VALUES

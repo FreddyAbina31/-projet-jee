@@ -37,11 +37,11 @@ public class ServiceMouvement implements IServiceMouvement {
 		return id;
 	}
 
-//	@Override
-//	public void modifier(DtoMouvement dtoMouvement) throws ExceptionValidation {
-//		verifierValiditeDonnees(dtoMouvement);
-//		daoMouvement.modifier(mapper.map(dtoMouvement));
-//	}
+	@Override
+	public void modifier(DtoMouvement dtoMouvement) throws ExceptionValidation {
+		verifierValiditeDonnees(dtoMouvement);
+		daoMouvement.modifier(mapper.map(dtoMouvement));
+	}
 
 	@Override
 	public void supprimer(int idMouvement) throws ExceptionValidation {
@@ -88,5 +88,7 @@ public class ServiceMouvement implements IServiceMouvement {
 			throw new ExceptionValidation(message.toString().substring(1));
 		}
 	}
+
+
 
 }

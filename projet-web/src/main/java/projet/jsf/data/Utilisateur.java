@@ -22,7 +22,7 @@ public class Utilisateur implements Serializable {
 	@Email( message="L'adresse e-mail n'est pas valide.")
 	private String email;
 
-	@Column(name = "motdepasse")
+	@Column(name = "Motdepasse")
 	private String motDePasse;
 
 	@NotBlank(message = "Le nom ne peut pas être vide")

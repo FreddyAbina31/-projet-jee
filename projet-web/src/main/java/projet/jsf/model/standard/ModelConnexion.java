@@ -45,6 +45,7 @@ public class ModelConnexion {
 	public String connect() {
 	    
 	    DtoCompte dto = serviceConnexion.sessionUtilisateurOuvrir( courant.getPseudo(), courant.getMotDePasse() );
+
 	    
 	    if ( dto != null ){
 	    	

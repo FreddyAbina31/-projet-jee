@@ -24,7 +24,6 @@ public class Banque {
 
 	private BigDecimal solde;
 
-	// bi-directional many-to-one association to Utilisateur
 	@OneToMany(mappedBy = "banque", cascade = ALL, orphanRemoval = true)
 	private List<Utilisateur> utilisateurs;
 
@@ -55,23 +54,23 @@ public class Banque {
 		this.solde = solde;
 	}
 
-	public List<Utilisateur> getUtilisateurs() {
+	public List<Utilisateur> getUtilisateur() {
 		return this.utilisateurs;
 	}
 
-	public void setUtilisateurs(List<Utilisateur> utilisateurs) {
-		this.utilisateurs = utilisateurs;
+	public void setUtilisateur(List<Utilisateur> utilisateur) {
+		this.utilisateurs = utilisateur;
 	}
 
 	public Utilisateur addUtilisateur(Utilisateur utilisateur) {
-		getUtilisateurs().add(utilisateur);
+		getUtilisateur().add(utilisateur);
 		utilisateur.setBanque(this);
 
 		return utilisateur;
 	}
 
 	public Utilisateur removeUtilisateur(Utilisateur utilisateur) {
-		getUtilisateurs().remove(utilisateur);
+		getUtilisateur().remove(utilisateur);
 		utilisateur.setBanque(null);
 
 		return utilisateur;
