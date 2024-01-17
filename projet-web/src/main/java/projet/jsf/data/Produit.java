@@ -7,21 +7,14 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
+@SuppressWarnings("serial")
 public class Produit implements Serializable {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	private Integer id;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -51,13 +44,8 @@ public class Produit implements Serializable {
 
 	private BigDecimal prixMinimal;
 
-	// bi-directional many-to-one association to Enchere
-	@OneToMany(mappedBy = "produit")
 	private List<Enchere> encheres;
-
-	// bi-directional many-to-one association to Utilisateur
-	@ManyToOne
-	@JoinColumn(name = "id_utilisateur")
+	
 	private Utilisateur utilisateur;
 
 	public Produit() {

@@ -1,6 +1,9 @@
 package projet.ejb.data;
 
 import javax.persistence.*;
+
+import static javax.persistence.CascadeType.ALL;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -27,38 +30,37 @@ public class Utilisateur {
 	private String nom;
 
 	private String prenom;
+	
+	@OneToMany(mappedBy = "utilisateur", cascade = ALL, orphanRemoval = true)
+    private List<Mouvement> mouvements;
 
-	private String pseudo;
+    @OneToMany(mappedBy = "utilisateur", cascade = ALL, orphanRemoval = true)
+    private List<Produit> produits;
 
-	private String role;
+    @ManyToOne
+    @JoinColumn(name = "id_banque")
+    private Banque banque;
 
-	//bi-directional many-to-one association to Mouvement
-	@OneToMany(mappedBy="utilisateur")
-	private List<Mouvement> mouvements;
-
-	//bi-directional many-to-one association to Produit
-	@OneToMany(mappedBy="utilisateur")
-	private List<Produit> produits;
-
-	//bi-directional many-to-one association to Banque
-	@ManyToOne
-	@JoinColumn(name="id_banque")
-	private Banque banque;
-
-	//bi-directional many-to-many association to Enchere
-	@ManyToMany
-	@JoinTable(
-		name="utilisateur_enchere"
-		, joinColumns={
-			@JoinColumn(name="id")
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="id_enchere")
-			}
-		)
-	private List<Enchere> encheres;
+    @ManyToMany
+    @JoinTable(
+            name = "utilisateur_enchere",
+            joinColumns = @JoinColumn(name = "id_utilisateur"),
+            inverseJoinColumns = @JoinColumn(name = "id_enchere"))
+    private List<Enchere> encheres;
 
 	public Utilisateur() {
+	}
+
+	public Utilisateur(Integer id, BigDecimal credit, String email, String motDePasse, String nom, String prenom,
+			String pseudo, Banque banque) {
+		super();
+		this.id = id;
+		this.credit = credit;
+		this.email = email;
+		this.motDePasse = motDePasse;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.banque = banque;
 	}
 
 	public Integer getId() {
@@ -107,22 +109,6 @@ public class Utilisateur {
 
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
-	}
-
-	public String getPseudo() {
-		return this.pseudo;
-	}
-
-	public void setPseudo(String pseudo) {
-		this.pseudo = pseudo;
-	}
-
-	public String getRole() {
-		return this.role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
 	}
 
 	public List<Mouvement> getMouvements() {

@@ -5,18 +5,15 @@ import java.sql.Time;
 import java.util.Date;
 import java.util.Objects;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
+@SuppressWarnings("serial")
 public class Mouvement implements Serializable{
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	private Integer id;
 	
 	@Temporal(TemporalType.DATE)
@@ -26,11 +23,10 @@ public class Mouvement implements Serializable{
 	@Pattern(regexp = "(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]", message = "Format d'heure attendu : HH:MM")
 	private Time heureTransaction;
 
+	@NotBlank( message = "Le pseudo doit être renseigné")
+	@Size(min=10, message = "Valeur trop courte pour le libellé : 10 car. min" )
 	private String libelle;
 
-	//bi-directional many-to-one association to Utilisateur
-	@ManyToOne
-	@JoinColumn(name="id_utilisateur")
 	private Utilisateur utilisateur;
 
 	public Mouvement() {

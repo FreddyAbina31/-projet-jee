@@ -6,23 +6,14 @@ import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 
+@SuppressWarnings("serial")
 public class Utilisateur implements Serializable {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	private Integer id;
 
 	private BigDecimal credit;
@@ -42,35 +33,12 @@ public class Utilisateur implements Serializable {
 	@Size(max=50, message="Valeur trop longue pour le prenom : 50 car. maxi" )
 	private String prenom;
 
-	private String pseudo;
-	@NotBlank(message = "Le rôle ne peut pas être vide")
-    @Pattern(regexp = "^(usager|gestionnaire)$", message = "Le rôle doit être 'usager' ou 'gestionnaire'")
-	private String role;
-
-	//bi-directional many-to-one association to Mouvement
-	@OneToMany(mappedBy="utilisateur")
 	private List<Mouvement> mouvements;
 
-	//bi-directional many-to-one association to Produit
-	@OneToMany(mappedBy="utilisateur")
 	private List<Produit> produits;
 
-	//bi-directional many-to-one association to Banque
-	@ManyToOne
-	@JoinColumn(name="id_banque")
 	private Banque banque;
-
-	//bi-directional many-to-many association to Enchere
-	@ManyToMany
-	@JoinTable(
-		name="utilisateur_enchere"
-		, joinColumns={
-			@JoinColumn(name="id")
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="id_enchere")
-			}
-		)
+	
 	private List<Enchere> encheres;
 
 	public Utilisateur() {
@@ -122,22 +90,6 @@ public class Utilisateur implements Serializable {
 
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
-	}
-
-	public String getPseudo() {
-		return this.pseudo;
-	}
-
-	public void setPseudo(String pseudo) {
-		this.pseudo = pseudo;
-	}
-
-	public String getRole() {
-		return this.role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
 	}
 
 	public List<Mouvement> getMouvements() {

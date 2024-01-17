@@ -4,6 +4,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
+import projet.commun.dto.DtoCompte;
+import projet.ejb.data.Compte;
 import projet.commun.dto.DtoBanque;
 import projet.commun.dto.DtoEnchere;
 import projet.commun.dto.DtoMouvement;
@@ -15,21 +17,24 @@ import projet.ejb.data.Mouvement;
 import projet.ejb.data.Produit;
 import projet.ejb.data.Utilisateur;
 
- 
-@Mapper( componentModel = "cdi" )
-public interface IMapperEjb {  
-	
-	static final IMapperEjb INSTANCE = Mappers.getMapper( IMapperEjb.class );
-	
-	
-	// Compte
-    Utilisateur map(DtoUtilisateur source);
+@Mapper(componentModel = "cdi")
+public interface IMapperEjb {
 
-    @Mapping(source = "motdepasse", target = "motDePasse")
-    DtoUtilisateur map(Utilisateur source);
-	
-	//Banque
-	
+	static final IMapperEjb INSTANCE = Mappers.getMapper(IMapperEjb.class);
+
+	// Compte
+
+	Compte map(DtoCompte source);
+
+	DtoCompte map(Compte source);
+
+	@Mapping(source = "motdepasse", target = "motDePasse")
+	DtoUtilisateur map(Utilisateur source);
+
+	Utilisateur map(DtoUtilisateur source);
+
+	// Banque
+
 	DtoBanque map(Banque source);
 
 	Banque map(DtoBanque dtoBanque);
@@ -45,5 +50,5 @@ public interface IMapperEjb {
 	Produit map(DtoProduit dtoProduit);
 
 	DtoProduit map(Produit produit);
-	
+
 }

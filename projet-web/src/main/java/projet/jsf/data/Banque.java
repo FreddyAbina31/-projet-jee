@@ -5,25 +5,23 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 
+@SuppressWarnings("serial")
 public class Banque implements Serializable {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	private int id;
 
+	@NotBlank( message = "Le nom doit être renseigné")
+	@Size(max=25, message = "Valeur trop longue pour le nom : 25 car. maxi" )
 	private String nom;
 
+	@NotBlank( message = "Le solde doit être renseigné")
 	private BigDecimal solde;
 
-	// bi-directional many-to-one association to Utilisateur
-	@OneToMany(mappedBy = "banque")
 	private List<Utilisateur> utilisateurs;
 
 	public Banque() {

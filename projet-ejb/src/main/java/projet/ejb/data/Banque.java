@@ -1,6 +1,9 @@
 package projet.ejb.data;
 
 import javax.persistence.*;
+
+import static javax.persistence.CascadeType.ALL;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -21,7 +24,7 @@ public class Banque {
 	private BigDecimal solde;
 
 	// bi-directional many-to-one association to Utilisateur
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "banque")
+	@OneToMany(mappedBy = "banque", cascade = ALL, orphanRemoval = true)
 	private List<Utilisateur> utilisateurs;
 
 	public Banque() {

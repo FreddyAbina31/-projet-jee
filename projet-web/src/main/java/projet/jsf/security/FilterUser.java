@@ -12,7 +12,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
-import projet.jsf.util.UtilisateurActif;
+import projet.jsf.util.CompteActif;
 import projet.jsf.util.UtilJsf;
 
 @WebFilter(dispatcherTypes = {
@@ -24,7 +24,7 @@ public class FilterUser implements Filter {
 
 	
 	@Inject
-	private UtilisateurActif		utilisateurActif;
+	private CompteActif		compteActif;
 	
 
 	public void destroy() {
@@ -33,7 +33,7 @@ public class FilterUser implements Filter {
 	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
-		if ( utilisateurActif.isUsager() ) {
+		if ( compteActif.isUsager() ) {
 	        // si OK, on traite l'URL normalement
 	        chain.doFilter(request, response);
 	    } else {

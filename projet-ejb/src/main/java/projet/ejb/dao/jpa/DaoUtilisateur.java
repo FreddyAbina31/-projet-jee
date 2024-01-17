@@ -9,7 +9,6 @@ import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 import projet.ejb.dao.IDaoUtilisateur;
@@ -55,30 +54,6 @@ public class DaoUtilisateur implements IDaoUtilisateur {
 		var jpql = "SELECT u FROM Utilisateur u ORDER BY u.pseudo";
 		var query = em.createQuery(jpql, Utilisateur.class);
 		return query.getResultList();
-	}
-
-	@Override
-	@TransactionAttribute( NOT_SUPPORTED )
-	public Utilisateur validerAuthentification(String pseudo, String motDePasse) {
-		var jpql = "SELECT u FROM Utilisateur u WHERE u.pseudo=:pseudo AND u.motDePasse = :motDePasse ";
-		var query = em.createQuery(jpql, Utilisateur.class);
-		query.setParameter("pseudo", pseudo);
-		query.setParameter("motDePasse", motDePasse);
-		try {
-			return query.getSingleResult();
-		} catch (NoResultException e) {
-			return null;
-		}
-	}
-
-	@Override
-	@TransactionAttribute( NOT_SUPPORTED )
-	public boolean verifierUnicitePseudo(String pseudo, int idUtilisateur) {
-		var jpql = "SELECT COUNT(u) FROM Utilisateur u WHERE u.pseudo=:pseudo AND u.id <> :idUtilisateur ";
-		var query = em.createQuery(jpql, Long.class);
-		query.setParameter("pseudo", pseudo);
-		query.setParameter("idUtilisateur", idUtilisateur);
-		return query.getSingleResult() == 0;
 	}
 
 }

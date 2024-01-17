@@ -5,11 +5,11 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import projet.commun.dto.DtoUtilisateur;
+import projet.commun.dto.DtoCompte;
+import projet.jsf.data.Compte;
+import projet.jsf.util.CompteActif;
 import projet.commun.service.IServiceConnexion;
-import projet.jsf.data.Utilisateur;
 import projet.jsf.data.mapper.IMapper;
-import projet.jsf.util.UtilisateurActif;
 import projet.jsf.util.UtilJsf;
 
 
@@ -18,11 +18,10 @@ import projet.jsf.util.UtilJsf;
 public class ModelConnexion {
 
 	// Champs
-
-	private Utilisateur			courant;
+	private Compte			courant;
 
 	@Inject
-	private UtilisateurActif		utilisateurActif;
+	private CompteActif		compteActif;
 	@Inject
 	private ModelInfo		modelInfo;
 	@EJB
@@ -33,9 +32,9 @@ public class ModelConnexion {
 
 	// Getters 
 	
-	public Utilisateur getCourant() {
+	public Compte getCourant() {
 		if ( courant == null ) {
-			courant = new Utilisateur();
+			courant = new Compte();
 		}
 		return courant;
 	}
@@ -45,7 +44,7 @@ public class ModelConnexion {
 	
 	public String connect() {
 	    
-	    DtoUtilisateur dto = serviceConnexion.sessionUtilisateurOuvrir( courant.getPseudo(), courant.getMotdepasse() );
+	    DtoCompte dto = serviceConnexion.sessionUtilisateurOuvrir( courant.getPseudo(), courant.getMotDePasse() );
 	    
 	    if ( dto != null ){
 	    	
@@ -56,10 +55,10 @@ public class ModelConnexion {
 //				throw new RuntimeException( e );
 //			}
 
-	        mapper.update(utilisateurActif, mapper.map(dto) );
+	        mapper.update(compteActif, mapper.map(dto) );
 	        
 	    	modelInfo.setTitre( "Bienvenue" );
-	    	modelInfo.setTexte( "Vous êtes connecté en tant que '" + utilisateurActif.getPseudo() +"'.");
+	    	modelInfo.setTexte( "Vous êtes connecté en tant que '" + compteActif.getPseudo() +"'.");
 		    return "info";
 
 	    } else {

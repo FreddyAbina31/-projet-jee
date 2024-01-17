@@ -5,28 +5,18 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
 
-
+@SuppressWarnings("serial")
 public class Enchere implements Serializable {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	private int id;
 
+	@NotBlank( message = "Le prix doit être renseigné")
 	private BigDecimal prix;
-
-	//bi-directional many-to-one association to Produit
-	@ManyToOne
-	@JoinColumn(name="id_produit")
+	
 	private Produit produit;
 
-	//bi-directional many-to-many association to Utilisateur
-	@ManyToMany(mappedBy="encheres")
 	private List<Utilisateur> utilisateurs;
 
 	public Enchere() {

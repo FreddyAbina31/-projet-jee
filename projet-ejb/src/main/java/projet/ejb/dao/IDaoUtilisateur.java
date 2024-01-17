@@ -15,8 +15,4 @@ public interface IDaoUtilisateur {
 	Utilisateur 		retrouver( int idUtilisateur );
 
 	List<Utilisateur> listerTout();
-
-	Utilisateur 		validerAuthentification( String pseudo, String motDePasse );
-
-	boolean 	verifierUnicitePseudo( String pseudo, int idUtilisateur );
 }

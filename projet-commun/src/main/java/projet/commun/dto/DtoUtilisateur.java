@@ -19,10 +19,6 @@ public class DtoUtilisateur implements Serializable {
 
 	private String prenom;
 
-	private String pseudo;
-
-	private String role;
-
 	private List<DtoMouvement> mouvements;
 
 	private List<DtoProduit> produits;
@@ -31,8 +27,7 @@ public class DtoUtilisateur implements Serializable {
 
 	private List<DtoEnchere> encheres;
 
-	public DtoUtilisateur(Integer id, BigDecimal credit, String email, String motDePasse, String nom, String prenom,
-			String pseudo, String role, List<DtoMouvement> mouvements, List<DtoProduit> produits, DtoBanque banque,
+	public DtoUtilisateur(Integer id, BigDecimal credit, String email, String motDePasse, String nom, String prenom, List<DtoMouvement> mouvements, List<DtoProduit> produits, DtoBanque banque,
 			List<DtoEnchere> encheres) {
 		super();
 		this.id = id;
@@ -41,8 +36,6 @@ public class DtoUtilisateur implements Serializable {
 		this.motDePasse = motDePasse;
 		this.nom = nom;
 		this.prenom = prenom;
-		this.pseudo = pseudo;
-		this.role = role;
 		this.mouvements = mouvements;
 		this.produits = produits;
 		this.banque = banque;
@@ -97,22 +90,6 @@ public class DtoUtilisateur implements Serializable {
 		this.prenom = prenom;
 	}
 
-	public String getPseudo() {
-		return this.pseudo;
-	}
-
-	public void setPseudo(String pseudo) {
-		this.pseudo = pseudo;
-	}
-
-	public String getRole() {
-		return this.role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
-
 	public String getMotDePasse() {
 		return motDePasse;
 	}
@@ -151,16 +128,6 @@ public class DtoUtilisateur implements Serializable {
 
 	public void setEncheres(List<DtoEnchere> encheres) {
 		this.encheres = encheres;
-	}
-
-	public boolean isInRole(String role) {
-
-		if (role != null) {
-				if (this.role.equals(role)) {
-					return true;
-				}
-		}
-		return false;
 	}
 
 }
