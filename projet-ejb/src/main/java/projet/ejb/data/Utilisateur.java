@@ -43,12 +43,13 @@ public class Utilisateur {
 	//bi-directional many-to-one association to Banque
 	@ManyToOne
 	@JoinColumn(name="id_banque")
+//	@OneToOne(mappedBy = "utilisateur", cascade = CascadeType.ALL)
 	private Banque banque;
 
 	//bi-directional many-to-many association to Enchere
 	@ManyToMany
 	@JoinTable(
-		name="utilisateur_enchere"
+		name="Utilisateur_enchere"
 		, joinColumns={
 			@JoinColumn(name="id")
 			}
@@ -56,6 +57,7 @@ public class Utilisateur {
 			@JoinColumn(name="id_enchere")
 			}
 		)
+	
 	private List<Enchere> encheres;
 
 	public Utilisateur() {

@@ -13,6 +13,6 @@ public interface IDaoMouvement {
 	Mouvement 	retrouver( int idMouvement );
 
 	List<Mouvement> listerTout();
-
-//	void modifier(Mouvement mouvement);
+	
+	void modifier(Mouvement mouvement);
 }

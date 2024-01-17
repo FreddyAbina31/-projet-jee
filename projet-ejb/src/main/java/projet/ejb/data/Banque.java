@@ -21,8 +21,10 @@ public class Banque {
 	private BigDecimal solde;
 
 	// bi-directional many-to-one association to Utilisateur
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "banque")
-	private List<Utilisateur> utilisateurs;
+	//@OneToMany(fetch = FetchType.EAGER, mappedBy = "banque")
+	@OneToOne
+	@JoinColumn(name = "id")
+	private Utilisateur utilisateur;
 
 	public Banque() {
 	}
@@ -51,15 +53,15 @@ public class Banque {
 		this.solde = solde;
 	}
 
-	public List<Utilisateur> getUtilisateurs() {
-		return this.utilisateurs;
+	public Utilisateur getUtilisateur() {
+		return this.utilisateur;
 	}
 
-	public void setUtilisateurs(List<Utilisateur> utilisateurs) {
-		this.utilisateurs = utilisateurs;
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
 	}
 
-	public Utilisateur addUtilisateur(Utilisateur utilisateur) {
+	/*public Utilisateur addUtilisateur(Utilisateur utilisateur) {
 		getUtilisateurs().add(utilisateur);
 		utilisateur.setBanque(this);
 
@@ -71,6 +73,6 @@ public class Banque {
 		utilisateur.setBanque(null);
 
 		return utilisateur;
-	}
+	}*/
 
 }

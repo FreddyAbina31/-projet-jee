@@ -52,10 +52,10 @@ public class DaoMouvement implements IDaoMouvement{
 		
 	}
 //
-//	@Override
-//	public void modifier(Mouvement mouvement) {
-//		// TODO Auto-generated method stub
-//		
-//	}
+	@Override
+	public void modifier(Mouvement mouvement) {
+		em.merge(mouvement);
+		
+	}
 
 }

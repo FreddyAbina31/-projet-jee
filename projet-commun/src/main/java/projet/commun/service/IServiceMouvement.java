@@ -7,13 +7,14 @@ import projet.commun.exception.ExceptionValidation;
 
 public interface IServiceMouvement {
 
-	int inserer(DtoMouvement dtoMouvement) throws ExceptionValidation;
 
-//	void modifier(DtoMouvement dtoMouvement) throws ExceptionValidation;
+	int				inserer( DtoMouvement dtoMouvement ) throws ExceptionValidation;
 
-	void supprimer(int idMouvement) throws ExceptionValidation;
+	void			modifier( DtoMouvement dtoMouvement ) throws ExceptionValidation; 
 
-	DtoMouvement retrouver(int idMouvement);
+	void			supprimer( int idProduit ) throws ExceptionValidation;
 
-	List<DtoMouvement> listerTout();
+	DtoMouvement 		retrouver( int idProduit ) ;
+
+	List<DtoMouvement>	listerTout() ;
 }
