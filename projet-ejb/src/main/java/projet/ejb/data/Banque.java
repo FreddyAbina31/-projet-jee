@@ -17,6 +17,7 @@ public class Banque {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idbanque")
 	private int id;
 
 	private String nom;

@@ -2,7 +2,6 @@ package projet.jsf.data;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.List;
 import java.util.Objects;
 
 import javax.validation.constraints.NotBlank;
@@ -17,7 +16,7 @@ public class Enchere implements Serializable {
 	
 	private Produit produit;
 
-	private List<Utilisateur> utilisateurs;
+	private Utilisateur utilisateur;
 
 	public Enchere() {
 	}
@@ -46,12 +45,12 @@ public class Enchere implements Serializable {
 		this.produit = produit;
 	}
 
-	public List<Utilisateur> getUtilisateurs() {
-		return this.utilisateurs;
+	public Utilisateur getUtilisateur() {
+		return this.utilisateur;
 	}
 
-	public void setUtilisateurs(List<Utilisateur> utilisateurs) {
-		this.utilisateurs = utilisateurs;
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
 	}
 
 	@Override

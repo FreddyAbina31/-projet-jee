@@ -2,7 +2,6 @@ package projet.commun.dto;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.List;
 
 @SuppressWarnings("serial")
 public class DtoEnchere implements Serializable{
@@ -13,7 +12,7 @@ public class DtoEnchere implements Serializable{
 	
 	private DtoProduit produit;
 
-	private List<DtoUtilisateur> utilisateurs;
+	private DtoUtilisateur utilisateur;
 
 
 	public int getId() {
@@ -40,12 +39,13 @@ public class DtoEnchere implements Serializable{
 		this.produit = produit;
 	}
 
-	public List<DtoUtilisateur> getUtilisateurs() {
-		return this.utilisateurs;
+	public DtoUtilisateur getUtilisateur() {
+		return utilisateur;
 	}
 
-	public void setUtilisateurs(List<DtoUtilisateur> utilisateurs) {
-		this.utilisateurs = utilisateurs;
+	public void setUtilisateur(DtoUtilisateur utilisateur) {
+		this.utilisateur = utilisateur;
 	}
+
 
 }

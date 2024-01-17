@@ -15,6 +15,7 @@ public class Mouvement {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idmouvement")
 	private Integer id;
 
 	@Temporal(TemporalType.DATE)

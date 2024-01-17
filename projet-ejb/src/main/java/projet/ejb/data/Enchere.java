@@ -2,7 +2,6 @@ package projet.ejb.data;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.List;
 
 
 /**
@@ -15,6 +14,7 @@ public class Enchere {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idenchere")
 	private int id;
 
 	private BigDecimal prix;
@@ -25,8 +25,9 @@ public class Enchere {
 	private Produit produit;
 
 	//bi-directional many-to-many association to Utilisateur
-	@ManyToMany(mappedBy="encheres")
-	private List<Utilisateur> utilisateurs;
+	@ManyToOne
+	@JoinColumn(name = "id_utilisateur")
+	private Utilisateur utilisateur;
 
 	public Enchere() {
 	}
@@ -53,14 +54,6 @@ public class Enchere {
 
 	public void setProduit(Produit produit) {
 		this.produit = produit;
-	}
-
-	public List<Utilisateur> getUtilisateurs() {
-		return this.utilisateurs;
-	}
-
-	public void setUtilisateurs(List<Utilisateur> utilisateurs) {
-		this.utilisateurs = utilisateurs;
 	}
 
 }

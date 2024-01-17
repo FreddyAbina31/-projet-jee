@@ -18,6 +18,7 @@ public class Utilisateur {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idutilisateur")
 	private Integer id;
 
 	private BigDecimal credit;
@@ -41,12 +42,9 @@ public class Utilisateur {
     @JoinColumn(name = "id_banque")
     private Banque banque;
 
-    @ManyToMany
-    @JoinTable(
-            name = "utilisateur_enchere",
-            joinColumns = @JoinColumn(name = "id_utilisateur"),
-            inverseJoinColumns = @JoinColumn(name = "id_enchere"))
+    @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Enchere> encheres;
+
 
 	public Utilisateur() {
 	}
