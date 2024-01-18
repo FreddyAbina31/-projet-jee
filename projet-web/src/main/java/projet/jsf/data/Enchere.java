@@ -16,7 +16,7 @@ public class Enchere implements Serializable {
 	
 	private Produit produit;
 
-	private Utilisateur utilisateur;
+	private Compte compte;
 
 	public Enchere() {
 	}
@@ -45,12 +45,12 @@ public class Enchere implements Serializable {
 		this.produit = produit;
 	}
 
-	public Utilisateur getUtilisateur() {
-		return this.utilisateur;
+	public Compte getCompte() {
+		return this.compte;
 	}
 
-	public void setUtilisateur(Utilisateur utilisateur) {
-		this.utilisateur = utilisateur;
+	public void setCompte(Compte compte) {
+		this.compte = compte;
 	}
 
 	@Override

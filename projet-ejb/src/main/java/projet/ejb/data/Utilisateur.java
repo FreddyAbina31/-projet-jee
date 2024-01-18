@@ -7,11 +7,6 @@ import static javax.persistence.CascadeType.ALL;
 import java.math.BigDecimal;
 import java.util.List;
 
-
-/**
- * The persistent class for the utilisateur database table.
- * 
- */
 @Entity
 @Table(name = "utilisateur")
 public class Utilisateur {
@@ -32,18 +27,18 @@ public class Utilisateur {
 
 	private String prenom;
 	
-	@OneToMany(mappedBy = "utilisateur", cascade = ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "utilisateur", cascade = ALL)
     private List<Mouvement> mouvements;
 
-    @OneToMany(mappedBy = "utilisateur", cascade = ALL, orphanRemoval = true)
-    private List<Produit> produits;
+//    @OneToMany(mappedBy = "utilisateur", fetch = FetchType.LAZY , cascade = ALL, orphanRemoval = true)
+//    private List<Produit> produits;
 
     @ManyToOne
     @JoinColumn(name = "id_banque")
     private Banque banque;
 
-    @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Enchere> encheres;
+//    @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL, fetch = FetchType.EAGER , orphanRemoval = true)
+//    private List<Enchere> encheres;
 
 	public Utilisateur() {
 	}
@@ -130,27 +125,27 @@ public class Utilisateur {
 		return mouvement;
 	}
 
-	public List<Produit> getProduits() {
-		return this.produits;
-	}
-
-	public void setProduits(List<Produit> produits) {
-		this.produits = produits;
-	}
-
-	public Produit addProduit(Produit produit) {
-		getProduits().add(produit);
-		produit.setUtilisateur(this);
-
-		return produit;
-	}
-
-	public Produit removeProduit(Produit produit) {
-		getProduits().remove(produit);
-		produit.setUtilisateur(null);
-
-		return produit;
-	}
+//	public List<Produit> getProduits() {
+//		return this.produits;
+//	}
+//
+//	public void setProduits(List<Produit> produits) {
+//		this.produits = produits;
+//	}
+//
+//	public Produit addProduit(Produit produit) {
+//		getProduits().add(produit);
+//		produit.setUtilisateur(this);
+//
+//		return produit;
+//	}
+//
+//	public Produit removeProduit(Produit produit) {
+//		getProduits().remove(produit);
+//		produit.setUtilisateur(null);
+//
+//		return produit;
+//	}
 
 	public Banque getBanque() {
 		return this.banque;
@@ -160,12 +155,12 @@ public class Utilisateur {
 		this.banque = banque;
 	}
 
-	public List<Enchere> getEncheres() {
-		return this.encheres;
-	}
-
-	public void setEncheres(List<Enchere> encheres) {
-		this.encheres = encheres;
-	}
+//	public List<Enchere> getEncheres() {
+//		return this.encheres;
+//	}
+//
+//	public void setEncheres(List<Enchere> encheres) {
+//		this.encheres = encheres;
+//	}
 
 }

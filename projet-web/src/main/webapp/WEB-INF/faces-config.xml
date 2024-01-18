@@ -15,6 +15,18 @@
    <from-outcome>connexion</from-outcome>
    <to-view-id>/connexion.xhtml</to-view-id>
   </navigation-case>
+  <navigation-case>
+   <from-outcome>profil</from-outcome>
+   <to-view-id>/pages/profil.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>listeProduit</from-outcome>
+   <to-view-id>/pages/produit/liste.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>listeUtilisateur</from-outcome>
+   <to-view-id>/pages/produit/listeUtilisateur.xhtml</to-view-id>
+  </navigation-case>
  </navigation-rule>
  <application/>
 </faces-config>

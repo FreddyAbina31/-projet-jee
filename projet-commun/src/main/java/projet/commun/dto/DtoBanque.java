@@ -50,6 +50,7 @@ public class DtoBanque implements Serializable{
 		this.utilisateurs = utilisateurs;
 	}
 
+
 	public DtoUtilisateur addUtilisateur(DtoUtilisateur utilisateur) {
 		getUtilisateurs().add(utilisateur);
 		utilisateur.setBanque(this);

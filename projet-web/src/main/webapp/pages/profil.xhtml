@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition template="/template/page-standard.xhtml"
+     xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:ui="http://java.sun.com/jsf/facelets"
+     xmlns:ng="http://xmlns.jcp.org/jsf/passthrough">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title><ui:insert name="titre">profil</ui:insert></title>
+
+        <h:outputStylesheet name="profil.css" library="css" />
+
+        <ui:insert name="head" />
+    </h:head>
+
+    <f:metadata>
+        <f:viewAction action="#{utilJsf.messageFromRequestAttribute()}" />
+    </f:metadata>
+
+    <ui:define name="titre">Profil</ui:define>
+
+    <ui:define name="contenu">
+        <!-- Utilisez la classe "d-flex" pour rendre le conteneur flexible et "justify-content-center" pour centrer horizontalement -->
+        <div class="container d-flex justify-content-center align-items-center" style="min-height: 20vh;">
+            <!-- Ajout d'une classe "col-md-8" pour spécifier la largeur de la colonne -->
+            <div class="col-md-8">
+                <br/>
+                <h:form>
+                    <div class="mb-5 gx-5">
+                        <div class="bg-secondary-soft px-4 py-5 rounded">
+                            <div class="row g-3">
+                                <h4 class="mb-4 mt-0">Contact detail</h4>
+                                <div class="col-md-6">
+                                    <label class="form-label">Nom *</label>
+                                    <h:inputText class="form-control" value="#{user.firstname}" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Prenom *</label>
+                                    <h:inputText class="form-control" value="#{user.lastname}" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputEmail4" class="form-label">Email *</label>
+                                    <h:inputText class="form-control" value="#{user.mail}" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Crédit</label>
+                                    <h:inputText class="form-control" value="+91 9852 8855 252" />
+                                </div>
+                            </div> <!-- Row END -->
+                        </div>
+                    </div> <!-- Row END -->
+
+                    <!-- Social media detail, change password, and buttons sections are missing -->
+
+                </h:form> <!-- Form END -->
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

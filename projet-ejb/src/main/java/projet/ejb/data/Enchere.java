@@ -18,16 +18,15 @@ public class Enchere {
 	private int id;
 
 	private BigDecimal prix;
-
-	//bi-directional many-to-one association to Produit
-	@ManyToOne
-	@JoinColumn(name="id_produit")
-	private Produit produit;
-
+	
+	@OneToOne
+    @JoinColumn(name = "id_produit", unique = true)
+    private Produit produit;
+	
 	//bi-directional many-to-many association to Utilisateur
 	@ManyToOne
-	@JoinColumn(name = "id_utilisateur")
-	private Utilisateur utilisateur;
+	@JoinColumn(name = "id_compte")
+	private Compte compte;
 
 	public Enchere() {
 	}

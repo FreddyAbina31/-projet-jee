@@ -14,6 +14,7 @@
 	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js" type="text/javascript"></script>
 	<script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.12.1/jquery-ui.js" type="text/javascript" ></script>	
 	<link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.12.1/themes/smoothness/jquery-ui.css" />
+	<h:outputStylesheet name="bootstrap.min.css" library="css" />
 	<h:outputScript name="datepicker-fr.js" library="js" />
 
 	<ui:insert name="head" />
@@ -27,9 +28,11 @@
 	<h:form rendered="#{compteActif.loggedIn}">
 		<h:link outcome="comptes" value="Personnes" rendered="#{compteActif.usager }" />
 		<h:panelGroup rendered="#{compteActif.gestionnaire}">
-			<h:link outcome="comptes" value="Catégories"  />
 			<h:link outcome="comptes" value="Comptes"  />
 		</h:panelGroup>
+		<h:link outcome="listeProduit" value="Nos Encheres"  />
+		<h:link outcome="listeUtilisateur" value="Mes Produits"  />
+		<h:link outcome="profil" value="Profil"  />
 		<h:commandLink action="#{compteActif.disconnect()}" value="Déconnexion"  />
 	</h:form>
 </div>

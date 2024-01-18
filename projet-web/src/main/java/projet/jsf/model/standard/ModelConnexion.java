@@ -39,9 +39,14 @@ public class ModelConnexion {
 		return courant;
 	}
 
-	
+	public void setCompteActif(CompteActif compteActif) {
+		this.compteActif = compteActif;
+	}
+
+
+
+
 	// Actons
-	
 	public String connect() {
 	    
 	    DtoCompte dto = serviceConnexion.sessionUtilisateurOuvrir( courant.getPseudo(), courant.getMotDePasse() );

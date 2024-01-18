@@ -17,4 +17,6 @@ public interface IServiceProduit {
 	DtoProduit 		retrouver( int idProduit) ;
 
 	List<DtoProduit>	listerTout() ;
+
+	List<DtoProduit> listerUtilisateur(int idCompte);
 }

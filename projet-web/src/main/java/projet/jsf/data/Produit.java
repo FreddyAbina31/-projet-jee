@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Time;
 import java.util.Date;
-import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Temporal;
@@ -44,9 +43,9 @@ public class Produit implements Serializable {
 
 	private BigDecimal prixMinimal;
 
-	private List<Enchere> encheres;
+	private Enchere enchere;
 	
-	private Utilisateur utilisateur;
+	private Compte compte;
 
 	public Produit() {
 	}
@@ -131,34 +130,20 @@ public class Produit implements Serializable {
 		this.prixMinimal = prixMinimal;
 	}
 
-	public List<Enchere> getEncheres() {
-		return this.encheres;
+	public Enchere getEncheres() {
+		return this.enchere;
 	}
 
-	public void setEncheres(List<Enchere> encheres) {
-		this.encheres = encheres;
+	public void setEncheres(Enchere encheres) {
+		this.enchere = encheres;
 	}
 
-	public Enchere addEnchere(Enchere enchere) {
-		getEncheres().add(enchere);
-		enchere.setProduit(this);
-
-		return enchere;
+	public Compte getCompte() {
+		return this.compte;
 	}
 
-	public Enchere removeEnchere(Enchere enchere) {
-		getEncheres().remove(enchere);
-		enchere.setProduit(null);
-
-		return enchere;
-	}
-
-	public Utilisateur getUtilisateur() {
-		return this.utilisateur;
-	}
-
-	public void setUtilisateur(Utilisateur utilisateur) {
-		this.utilisateur = utilisateur;
+	public void setCompte(Compte compte) {
+		this.compte = compte;
 	}
 
 	@Override

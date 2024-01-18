@@ -15,4 +15,6 @@ public interface IDaoProduit {
 	Produit 	retrouver( int idProduit );
 
 	List<Produit> listerTout();
+	
+	List<Produit> listerUtilisateur(int idCompte);
 }

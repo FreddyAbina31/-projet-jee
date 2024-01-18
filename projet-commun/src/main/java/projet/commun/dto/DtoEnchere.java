@@ -12,7 +12,7 @@ public class DtoEnchere implements Serializable{
 	
 	private DtoProduit produit;
 
-	private DtoUtilisateur utilisateur;
+	private DtoCompte compte;
 
 
 	public int getId() {
@@ -39,12 +39,12 @@ public class DtoEnchere implements Serializable{
 		this.produit = produit;
 	}
 
-	public DtoUtilisateur getUtilisateur() {
-		return utilisateur;
+	public DtoCompte getCompte() {
+		return compte;
 	}
 
-	public void setUtilisateur(DtoUtilisateur utilisateur) {
-		this.utilisateur = utilisateur;
+	public void setCompte(DtoCompte compte) {
+		this.compte = compte;
 	}
 
 

@@ -16,7 +16,6 @@ import projet.ejb.data.Produit;
 
 @Stateless
 @Local
-@TransactionAttribute( MANDATORY )
 public class DaoProduit implements IDaoProduit{
 	
 	// Champs
@@ -24,18 +23,22 @@ public class DaoProduit implements IDaoProduit{
 	@PersistenceContext
 	private EntityManager	em;
 
+	@TransactionAttribute( MANDATORY )
 	@Override
 	public int inserer(Produit produit) {
+		produit.getEnchere().setProduit(produit);
 		em.persist(produit);
 		em.flush();
 		return produit.getId();
 	}
 
+	@TransactionAttribute( MANDATORY )
 	@Override
 	public void modifier(Produit produit) {
 		em.merge( produit );
 	}
 
+	@TransactionAttribute( MANDATORY )
 	@Override
 	public void supprimer(int idProduit) {
 		em.remove( retrouver(idProduit) );
@@ -51,8 +54,17 @@ public class DaoProduit implements IDaoProduit{
 	@TransactionAttribute( NOT_SUPPORTED )
 	public List<Produit> listerTout() {
 		em.clear();
-		var jpql = "SELECT p FROM Produit p ORDER BY p.nom";
+		var jpql = "SELECT p FROM Produit p";
 		var query = em.createQuery( jpql, Produit.class );
+		return query.getResultList();
+	}
+	
+	@TransactionAttribute( NOT_SUPPORTED )
+	public List<Produit> listerUtilisateur(int idCompte) {
+		em.clear();
+		var jpql = "SELECT p FROM Produit p WHERE p.compte = :id";
+		var query = em.createQuery( jpql, Produit.class );
+		query.setParameter("id", idCompte);
 		return query.getResultList();
 	}
 

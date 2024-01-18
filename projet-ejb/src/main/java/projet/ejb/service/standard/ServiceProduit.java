@@ -61,6 +61,16 @@ public class ServiceProduit implements IServiceProduit {
 			return liste;
 		}
 		
+		@Override
+		@TransactionAttribute(NOT_SUPPORTED)
+		public List<DtoProduit> listerUtilisateur(int idCompte) {
+			List<DtoProduit> liste = new ArrayList<>();
+			for (Produit produit : daoProduit.listerUtilisateur(idCompte)) {
+				liste.add(mapper.map(produit));
+			}
+			return liste;
+		}
+		
 		// Méthodes auxiliaires
 
 			private void verifierValiditeDonnees(DtoProduit dtoProduit) throws ExceptionValidation {

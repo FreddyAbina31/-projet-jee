@@ -25,7 +25,12 @@ public class ModelProduit implements Serializable {
 	
 		private List<Produit>	liste;
 		
+		private List<Produit>	listeUser;
+		
 		private Produit			courant;
+		
+		@Inject
+		ModelConnexion connexion;
 		
 		@EJB
 		private IServiceProduit	serviceProduit;
@@ -45,6 +50,17 @@ public class ModelProduit implements Serializable {
 			}
 			return liste;
 		}
+		
+		public List<Produit> getListeUtilisateur() {
+			if ( listeUser == null ) {
+				listeUser = new ArrayList<>();
+				for ( DtoProduit dto : serviceProduit.listerUtilisateur(connexion.getCourant().getId()) ) {
+						listeUser.add( mapper.map( dto ) );
+				}
+			}
+			return liste;
+		}
+
 		
 			public Produit getCourant() {
 				if ( courant == null ) {

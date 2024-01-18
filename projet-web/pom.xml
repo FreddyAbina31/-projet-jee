@@ -46,6 +46,12 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<scope>runtime</scope>
+			</dependency>
+
 		<!-- Import the JPA API, we use provided scope as the API is included in WildFly / JBoss EAP -->
 		<dependency>
 			<groupId>jakarta.persistence</groupId>

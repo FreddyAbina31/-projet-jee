@@ -95,7 +95,7 @@
 				<artifactId>mapstruct</artifactId>
 				<version>1.5.5.Final</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>${project.groupId}</groupId>
 				<artifactId>projet-commun</artifactId>

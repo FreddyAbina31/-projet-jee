@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Time;
 import java.util.Date;
-import java.util.List;
 
 
 /**
@@ -45,14 +44,12 @@ public class Produit {
 	@Column(name="prix_minimal")
 	private BigDecimal prixMinimal;
 
-	//bi-directional many-to-one association to Enchere
-	@OneToMany(mappedBy="produit")
-	private List<Enchere> encheres;
+	@OneToOne(mappedBy = "produit", cascade = CascadeType.ALL)
+    private Enchere enchere;
 
-	//bi-directional many-to-one association to Utilisateur
 	@ManyToOne
-	@JoinColumn(name="id_utilisateur")
-	private Utilisateur utilisateur;
+	@JoinColumn(name="id_compte")
+	private Compte compte;
 
 	public Produit() {
 	}
@@ -137,34 +134,20 @@ public class Produit {
 		this.prixMinimal = prixMinimal;
 	}
 
-	public List<Enchere> getEncheres() {
-		return this.encheres;
-	}
-
-	public void setEncheres(List<Enchere> encheres) {
-		this.encheres = encheres;
-	}
-
-	public Enchere addEnchere(Enchere enchere) {
-		getEncheres().add(enchere);
-		enchere.setProduit(this);
-
+	public Enchere getEnchere() {
 		return enchere;
 	}
 
-	public Enchere removeEnchere(Enchere enchere) {
-		getEncheres().remove(enchere);
-		enchere.setProduit(null);
-
-		return enchere;
+	public void setEnchere(Enchere enchere) {
+		this.enchere = enchere;
 	}
 
-	public Utilisateur getUtilisateur() {
-		return this.utilisateur;
+	public Compte getCompte() {
+		return this.compte;
 	}
 
-	public void setUtilisateur(Utilisateur utilisateur) {
-		this.utilisateur = utilisateur;
+	public void setCompte(Compte compte) {
+		this.compte = compte;
 	}
 
 }

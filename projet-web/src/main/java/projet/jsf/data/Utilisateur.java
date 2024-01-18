@@ -122,19 +122,19 @@ public class Utilisateur implements Serializable {
 		this.produits = produits;
 	}
 
-	public Produit addProduit(Produit produit) {
-		getProduits().add(produit);
-		produit.setUtilisateur(this);
-
-		return produit;
-	}
-
-	public Produit removeProduit(Produit produit) {
-		getProduits().remove(produit);
-		produit.setUtilisateur(null);
-
-		return produit;
-	}
+//	public Produit addProduit(Produit produit) {
+//		getProduits().add(produit);
+//		produit.setUtilisateur(this);
+//
+//		return produit;
+//	}
+//
+//	public Produit removeProduit(Produit produit) {
+//		getProduits().remove(produit);
+//		produit.setUtilisateur(null);
+//
+//		return produit;
+//	}
 
 	public Banque getBanque() {
 		return this.banque;

@@ -1,11 +1,12 @@
 package projet.commun.dto;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Time;
 import java.util.Date;
-import java.util.List;
 
-public class DtoProduit {
+@SuppressWarnings("serial")
+public class DtoProduit implements Serializable {
 
 	private Integer id;
 
@@ -27,16 +28,14 @@ public class DtoProduit {
 
 	private BigDecimal prixMinimal;
 
-	private List<DtoEnchere> encheres;
-
-	private DtoUtilisateur utilisateur;
+	private DtoCompte compte;
 	
-	
+	private DtoEnchere enchere;	
 
 
 	public DtoProduit(Integer id, Date dateDebutEnchere, Date dateFinEnchere, String description, String flag,
 			Time heureDebutEnchere, Time heureFinEnchere, String nom, String photo, BigDecimal prixMinimal,
-			List<DtoEnchere> encheres, DtoUtilisateur utilisateur) {
+			DtoEnchere encheres, DtoCompte compte) {
 		super();
 		this.id = id;
 		this.dateDebutEnchere = dateDebutEnchere;
@@ -48,8 +47,8 @@ public class DtoProduit {
 		this.nom = nom;
 		this.photo = photo;
 		this.prixMinimal = prixMinimal;
-		this.encheres = encheres;
-		this.utilisateur = utilisateur;
+		this.enchere = encheres;
+		this.compte = compte;
 	}
 
 	public Integer getId() {
@@ -132,20 +131,20 @@ public class DtoProduit {
 		this.prixMinimal = prixMinimal;
 	}
 
-	public List<DtoEnchere> getEncheres() {
-		return encheres;
+	public DtoEnchere getEncheres() {
+		return enchere;
 	}
 
-	public void setEncheres(List<DtoEnchere> encheres) {
-		this.encheres = encheres;
+	public void setEncheres(DtoEnchere encheres) {
+		this.enchere = encheres;
 	}
 
-	public DtoUtilisateur getUtilisateur() {
-		return utilisateur;
+	public DtoCompte getCompte() {
+		return compte;
 	}
 
-	public void setUtilisateur(DtoUtilisateur utilisateur) {
-		this.utilisateur = utilisateur;
+	public void setCompte(DtoCompte compte) {
+		this.compte = compte;
 	}
 
 }

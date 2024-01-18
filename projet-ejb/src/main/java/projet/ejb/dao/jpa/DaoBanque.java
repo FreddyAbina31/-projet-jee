@@ -51,7 +51,7 @@ public class DaoBanque implements IDaoBanque {
 	@TransactionAttribute(NOT_SUPPORTED)
 	public List<Banque> listerTout() {
 		em.clear();
-		var jpql = "SELECT b FROM Banque b ORDER BY b.nom";
+		var jpql = "SELECT b FROM Banque b JOIN FETCH b.utilisateurs ORDER BY b.nom";
 		var query = em.createQuery(jpql, Banque.class);
 		return query.getResultList();
 	}

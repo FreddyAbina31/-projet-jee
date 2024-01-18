@@ -6,13 +6,16 @@ import static javax.persistence.GenerationType.IDENTITY;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import projet.ejb.data.Compte;
@@ -42,6 +45,12 @@ public class Compte {
 	@Column(name = "role")
 	private List<String> roles = new ArrayList<>();
 
+	@OneToMany(mappedBy = "compte", cascade = CascadeType.ALL)
+	private List<Produit> produits;
+	
+	@OneToMany(mappedBy = "compte", cascade = CascadeType.ALL)
+    private List<Enchere> encheres;
+	
 	// Constructeurs
 
 	public Compte() {
@@ -97,6 +106,22 @@ public class Compte {
 	}
 
 	// equals() et hashcode()
+
+	public List<Produit> getProduits() {
+		return produits;
+	}
+
+	public void setProduits(List<Produit> produits) {
+		this.produits = produits;
+	}
+
+	public List<Enchere> getEncheres() {
+		return encheres;
+	}
+
+	public void setEncheres(List<Enchere> encheres) {
+		this.encheres = encheres;
+	}
 
 	@Override
 	public int hashCode() {

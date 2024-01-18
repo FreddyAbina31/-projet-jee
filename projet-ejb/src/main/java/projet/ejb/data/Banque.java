@@ -24,7 +24,7 @@ public class Banque {
 
 	private BigDecimal solde;
 
-	@OneToMany(mappedBy = "banque", cascade = ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "banque", cascade = ALL, fetch = FetchType.LAZY, orphanRemoval = true)
 	private List<Utilisateur> utilisateurs;
 
 	public Banque() {
@@ -60,6 +60,14 @@ public class Banque {
 
 	public void setUtilisateur(List<Utilisateur> utilisateur) {
 		this.utilisateurs = utilisateur;
+	}
+
+	public List<Utilisateur> getUtilisateurs() {
+		return utilisateurs;
+	}
+
+	public void setUtilisateurs(List<Utilisateur> utilisateurs) {
+		this.utilisateurs = utilisateurs;
 	}
 
 	public Utilisateur addUtilisateur(Utilisateur utilisateur) {

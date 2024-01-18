@@ -5,6 +5,7 @@ import static javax.ejb.TransactionAttributeType.NOT_SUPPORTED;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 
 import projet.commun.dto.DtoCompte;
@@ -27,7 +28,7 @@ public class ServiceConnexion implements IServiceConnexion {
 	// Actions
 
 	@Override
-	@TransactionAttribute(NOT_SUPPORTED)
+	@TransactionAttribute( TransactionAttributeType.REQUIRED )
 	public DtoCompte sessionUtilisateurOuvrir(String pseudo, String motDePasse) {
 		DtoCompte compte = mapper.map(daoCompte.validerAuthentification(pseudo, motDePasse));
 		return compte;
