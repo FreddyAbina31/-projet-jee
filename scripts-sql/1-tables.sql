@@ -74,7 +74,7 @@ CREATE TABLE Produit(
     heure_fin_enchere TIME NOT NULL,
     flag VARCHAR(50) NOT NULL,
     Id_compte INT NOT NULL,
-    Id_enchere INT NOT NULL,
+    Id_enchere INT,
     PRIMARY KEY(IdProduit),
     FOREIGN KEY(Id_compte) REFERENCES Compte(IdCompte),
     FOREIGN KEY(Id_enchere) REFERENCES Enchere(IdEnchere)
