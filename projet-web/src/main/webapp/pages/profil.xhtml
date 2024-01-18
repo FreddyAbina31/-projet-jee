@@ -33,26 +33,24 @@
                             <div class="row g-3">
                                 <h4 class="mb-4 mt-0">Contact detail</h4>
                                 <div class="col-md-6">
-                                    <label class="form-label">Nom *</label>
-                                    <h:inputText class="form-control" value="#{user.firstname}" />
+                                    <label class="form-label">Pseudo *</label>
+                                    <h:inputText class="form-control" value="#{modelConnexion.compteActif.pseudo}" />
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label">Prenom *</label>
-                                    <h:inputText class="form-control" value="#{user.lastname}" />
+                                    <label class="form-label">Email *</label>
+                                    <h:inputText class="form-control" value="#{modelConnexion.compteActif.email}" />
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputEmail4" class="form-label">Email *</label>
-                                    <h:inputText class="form-control" value="#{user.mail}" />
+                                    <label for="inputEmail4" class="form-label">Role *</label>
+                                    <h:inputText class="form-control" value="#{modelConnexion.compteActif.roles}" />
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Crédit</label>
-                                    <h:inputText class="form-control" value="+91 9852 8855 252" />
+                                    <h:inputText class="form-control" value="0" />
                                 </div>
                             </div> <!-- Row END -->
                         </div>
                     </div> <!-- Row END -->
-
-                    <!-- Social media detail, change password, and buttons sections are missing -->
 
                 </h:form> <!-- Form END -->
             </div>

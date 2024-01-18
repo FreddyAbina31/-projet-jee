@@ -42,6 +42,10 @@ public class ModelConnexion {
 	public void setCompteActif(CompteActif compteActif) {
 		this.compteActif = compteActif;
 	}
+	
+	public Compte getCompteActif() {
+		return this.compteActif;
+	}
 
 
 

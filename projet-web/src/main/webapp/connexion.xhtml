@@ -1,36 +1,49 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <ui:composition template="/template/page-standard.xhtml"
-     xmlns="http://www.w3.org/1999/xhtml"
-     xmlns:h="http://java.sun.com/jsf/html"
-     xmlns:f="http://java.sun.com/jsf/core"
-     xmlns:ui="http://java.sun.com/jsf/facelets">>
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<f:metadata>
-	<f:viewAction action="#{utilJsf.messageFromRequestAttribute()}" />
-</f:metadata>
+	<f:metadata>
+		<f:viewAction action="#{utilJsf.messageFromRequestAttribute()}" />
+	</f:metadata>
 
-     <ui:define name="titre">Projet JEE</ui:define>
+	<ui:define name="titre">Projet JEE</ui:define>
 
-    <ui:define name="contenu">
+	<ui:define name="contenu">
+		<h:form>
+			<div class="container mt-4">
+				<div class="row justify-content-center">
+					<div class="col-md-6">
+						<div class="card">
+							<div class="card-body">
+								<h2 class="card-title text-center">Connexion</h2>
+								<table class="table">
+									<tr>
+										<td><label for="pseudo">Pseudo :</label></td>
+										<td><h:inputText id="pseudo" size="60"
+												class="form-control"
+												value="#{modelConnexion.courant.pseudo}" /></td>
+									</tr>
+									<tr>
+										<td><label for="motDePasse">Mot de passe :</label></td>
+										<td><h:inputSecret id="motDePasse" size="60"
+												class="form-control"
+												value="#{modelConnexion.courant.motDePasse}" /></td>
+									</tr>
+								</table>
 
-	<h:form>
-		<table class="form">
-			<tr>
-				<td><label>Pseudo :</label></td>
-				<td><h:inputText size="15" value="#{modelConnexion.courant.pseudo}" /></td>
-			</tr>
-			<tr>
-				<td><label>Mot de passe :</label></td>
-				<td><h:inputSecret size="15" value="#{modelConnexion.courant.motDePasse}" /></td>
-			</tr>
-		</table>
-	
-			<br />
-			<h:commandButton action="#{modelConnexion.connect()}" value="Se connecter">
-			</h:commandButton>
-			<input type="reset" value="Effacer" />
-	</h:form>
-	
+								<div class="text-center">
+									<h:commandButton action="#{modelConnexion.connect()}"
+										value="Se connecter" class="btn btn-primary" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</h:form>
 	</ui:define>
 
 </ui:composition>

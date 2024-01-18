@@ -19,27 +19,33 @@
 
     <ui:define name="titre">Nos Produits</ui:define>
 
-    <ui:define name="contenu">
-        <div class="container">
-            <br/>
+<ui:define name="contenu">
+    <div class="container">
+        <br />
 
-            <!-- Boucle pour afficher les produits -->
-            <div class="row">
-                <ui:repeat value="#{modelProduit.liste}" var="produit">
-                    <div class="col-md-3 mb-4">
-                        <div class="card">
-                            <img src="#{produit.photo}" class="card-img-top" alt="#{produit.nom}" />
-                            <div class="card-body">
-                                <h5 class="card-title">#{produit.nom}</h5>
-                                <p class="card-text">#{produit.description}</p>
-                                <p class="card-text">Prix: #{produit.prixMinimal} $</p>
-                            </div>
+        <!-- Boucle pour afficher les produits -->
+        <div class="row">
+            <ui:repeat value="#{modelProduit.liste}" var="produit">
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="#{produit.photo}" class="card-img-top" alt="#{produit.nom}" />
+                        <div class="card-body">
+                            <h5 class="card-title">#{produit.nom}</h5>
+                            <p class="card-text">#{produit.description}</p>
+                            <p class="card-text font-weight-bold">Prix de départ : #{produit.prixMinimal} £</p>
+                            <p class="card-text font-weight-bold">Prix actuel : #{produit.enchere.compte.id} £</p>
+                            <p class="card-text">#{produit.flag}</p>
+                            <h:link outcome="enchere" styleClass="btn btn-success" value="Enchérir">
+                                <f:param name="idP" value="#{produit.id}" />
+                            </h:link>
                         </div>
                     </div>
-                </ui:repeat>
-            </div>
-
+                </div>
+            </ui:repeat>
         </div>
-    </ui:define>
+
+    </div>
+</ui:define>
+
 
 </ui:composition>

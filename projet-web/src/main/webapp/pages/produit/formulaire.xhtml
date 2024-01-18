@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <ui:composition template="/template/page-standard.xhtml"
-     xmlns="http://www.w3.org/1999/xhtml"
-     xmlns:h="http://java.sun.com/jsf/html"
-     xmlns:f="http://java.sun.com/jsf/core"
-     xmlns:ui="http://java.sun.com/jsf/facelets"
-     xmlns:bs="http://xmlns.jcp.org/jsf/passthrough">
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:bs="http://xmlns.jcp.org/jsf/passthrough">
 
 	<f:metadata>
-		<f:viewParam name="id" value="#{modelCompte.courant.id}" />
-		<f:viewAction action="#{modelCompte.actualiserCourant()}" />
+		<f:viewParam name="id" value="#{modelProduit.courant.id}" />
+		<f:viewAction action="#{modelProduit.actualiserCourant()}" />
 	</f:metadata>
 
-	<ui:define name="titre">Utilisateur</ui:define>
+	<ui:define name="titre">Produit</ui:define>
 
 	<ui:define name="contenu">
 		<h:form>
@@ -19,66 +19,66 @@
 			<div class="container mt-3">
 				<div class="row">
 					<div class="col-md-6 offset-md-3">
-						<table class="table">
-							<tr>
-								<td>
-									<h:outputLabel for="id">Id :</h:outputLabel>
-								</td>
-								<td>
-									<h:inputText id="id" size="5" readonly="true"
-										value="#{modelCompte.courant.id}" class="form-control" />
-									<h:message for="id" errorClass="error" />
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<h:outputLabel for="pseudo">Pseudo :</h:outputLabel>
-								</td>
-								<td>
-									<h:inputText id="pseudo" size="25"
-										value="#{model.courant.pseudo}" class="form-control" />
-									<h:message for="pseudo" errorClass="error" />
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<h:outputLabel for="motDePasse">Mot de passe :</h:outputLabel>
-								</td>
-								<td>
-									<h:inputText id="motDePasse" size="25"
-										value="#{modelCompte.courant.motDePasse}" class="form-control" />
-									<h:message for="motDePasse" errorClass="error" />
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<h:outputLabel for="email">Email :</h:outputLabel>
-								</td>
-								<td>
-									<h:inputText id="email" size="50"
-										value="#{modelCompte.courant.email}" class="form-control" />
-									<h:message for="email" errorClass="error" />
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<h:outputLabel for="roles">Roles :</h:outputLabel>
-								</td>
-								<td>
-									<h:selectManyCheckbox id="roles" layout="pageDirection"
-										value="#{modelCompte.courant.roles}" class="form-check">
-										<f:selectItems value="#{utilAppli.roles}" var="role"
-											itemLabel="#{utilAppli.getLibelléDeRole(role)}" />
-									</h:selectManyCheckbox>
-									<h:message for="roles" errorClass="error" />
-								</td>
-							</tr>
-						</table>
+						<div class="card">
+							<div class="card-body">
+								<h2 class="card-title text-center">Édition du Produit</h2>
+								<table class="table">
+									<tr>
+										<td><h:outputLabel for="idProduit">Id Produit :</h:outputLabel>
+										</td>
+										<td><h:inputText id="idProduit" size="5" readonly="true"
+												value="#{modelProduit.courant.id}" class="form-control" />
+											<h:message for="idProduit" errorClass="error" /></td>
+									</tr>
+									<tr>
+										<td><h:outputLabel for="compte">Id Produit :</h:outputLabel>
+										</td>
+										<td><h:inputText id="compte" size="50" readonly="true"
+												value="#{modelConnexion.compteActif.pseudo}" class="form-control" />
+											<h:message for="compte" errorClass="error" /></td>
+									</tr>
+									<tr>
+										<td><h:outputLabel for="nom">Nom :</h:outputLabel></td>
+										<td><h:inputText id="nom" size="50"
+												value="#{modelProduit.courant.nom}" class="form-control" />
+											<h:message for="nom" errorClass="error" /></td>
+									</tr>
+									<tr>
+										<td><h:outputLabel for="description">Description :</h:outputLabel>
+										</td>
+										<td><h:inputText id="description" size="70"
+												value="#{modelProduit.courant.description}"
+												class="form-control" /> <h:message for="description"
+												errorClass="error" /></td>
+									</tr>
+									<tr>
+										<td><h:outputLabel for="prixMinimal">Prix Minimal :</h:outputLabel>
+										</td>
+										<td><h:inputText id="prixMinimal" size="10"
+												value="#{modelProduit.courant.prixMinimal}"
+												class="form-control" /> <h:message for="prixMinimal"
+												errorClass="error" /></td>
+									</tr>
+									<tr>
+										<td><h:outputLabel for="vente">Mettre aux Enchères :</h:outputLabel></td>
+										<td><h:selectOneMenu id="vente"
+												value="#{modelProduit.courant.vente}" class="form-control">
+												<f:selectItem itemValue="true" itemLabel="Oui" />
+												<f:selectItem itemValue="false" itemLabel="Non" />
+											</h:selectOneMenu> <h:message for="vente" errorClass="error" /></td>
+									</tr>
+								</table>
 
-						<br />
-						<h:commandButton value="Valider"
-							action="#{modelCompte.validerMiseAJour()}" class="btn btn-primary" />
-						<h:button value="Retour" outcome="comptes" class="btn btn-secondary" />
+								<br />
+								<div class="text-center">
+									<h:commandButton value="Valider"
+										action="#{modelProduit.validerMiseAJour()}"
+										class="btn btn-primary" />
+									<h:button value="Retour" outcome="listeUtilisateur"
+										class="btn btn-secondary ml-2" />
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

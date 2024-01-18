@@ -28,6 +28,8 @@ public class Produit implements Serializable {
 	private String description;
 
 	private String flag;
+	
+	private boolean vente;
 
 	@Pattern(regexp = "(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]", message = "Format d'heure attendu : HH:MM")
 	private Time heureDebutEnchere;
@@ -130,11 +132,11 @@ public class Produit implements Serializable {
 		this.prixMinimal = prixMinimal;
 	}
 
-	public Enchere getEncheres() {
+	public Enchere getEnchere() {
 		return this.enchere;
 	}
 
-	public void setEncheres(Enchere encheres) {
+	public void setEnchere(Enchere encheres) {
 		this.enchere = encheres;
 	}
 
@@ -146,6 +148,14 @@ public class Produit implements Serializable {
 		this.compte = compte;
 	}
 
+	public boolean isVente() {
+		return vente;
+	}
+
+	public void setVente(boolean vente) {
+		this.vente = vente;
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

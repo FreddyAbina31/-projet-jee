@@ -41,5 +41,23 @@
 			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/TEMP/maven-repository/jakarta/enterprise/jakarta.enterprise.cdi-api/2.0.2/jakarta.enterprise.cdi-api-2.0.2.jar" sourcepath="C:/TEMP/maven-repository/jakarta/enterprise/jakarta.enterprise.cdi-api/2.0.2/jakarta.enterprise.cdi-api-2.0.2-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.groupId" value="jakarta.enterprise"/>
+			<attribute name="maven.artifactId" value="jakarta.enterprise.cdi-api"/>
+			<attribute name="maven.version" value="2.0.2"/>
+			<attribute name="maven.scope" value="provided"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/TEMP/maven-repository/jakarta/inject/jakarta.inject-api/1.0.5/jakarta.inject-api-1.0.5.jar" sourcepath="C:/TEMP/maven-repository/jakarta/inject/jakarta.inject-api/1.0.5/jakarta.inject-api-1.0.5-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.groupId" value="jakarta.inject"/>
+			<attribute name="maven.artifactId" value="jakarta.inject-api"/>
+			<attribute name="maven.version" value="1.0.5"/>
+			<attribute name="maven.scope" value="provided"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

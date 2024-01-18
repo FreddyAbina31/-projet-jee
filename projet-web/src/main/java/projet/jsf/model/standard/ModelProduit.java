@@ -20,98 +20,103 @@ import projet.jsf.util.UtilJsf;
 @Named
 @ViewScoped
 public class ModelProduit implements Serializable {
-	
+
 	// Champs
-	
-		private List<Produit>	liste;
-		
-		private List<Produit>	listeUser;
-		
-		private Produit			courant;
-		
-		@Inject
-		ModelConnexion connexion;
-		
-		@EJB
-		private IServiceProduit	serviceProduit;
-		
-		@Inject
-		private IMapper			mapper;
 
-		
-		// Getters 
-		
-		public List<Produit> getListe() {
-			if ( liste == null ) {
-				liste = new ArrayList<>();
-				for ( DtoProduit dto : serviceProduit.listerTout() ) {
-					liste.add( mapper.map( dto ) );
-				}
+	private List<Produit> liste;
+
+	private List<Produit> listeUser;
+
+	private Produit courant;
+
+	@Inject
+	ModelConnexion connexion;
+
+	@EJB
+	private IServiceProduit serviceProduit;
+
+	@Inject
+	private IMapper mapper;
+
+	// Getters
+
+	public List<Produit> getListe() {
+		if (liste == null) {
+			liste = new ArrayList<>();
+			for (DtoProduit dto : serviceProduit.listerTout()) {
+				liste.add(mapper.map(dto));
 			}
-			return liste;
 		}
-		
-		public List<Produit> getListeUtilisateur() {
-			if ( listeUser == null ) {
-				listeUser = new ArrayList<>();
-				for ( DtoProduit dto : serviceProduit.listerUtilisateur(connexion.getCourant().getId()) ) {
-						listeUser.add( mapper.map( dto ) );
-				}
+		return liste;
+	}
+
+	public List<Produit> getListeUtilisateur() {
+			getListe();
+			
+			listeUser = new ArrayList<>();
+
+		for (Produit produit : liste) {
+			if (produit.getCompte().getId() == connexion.getCompteActif().getId()) {
+				listeUser.add(produit);
 			}
-			return liste;
 		}
 
-		
-			public Produit getCourant() {
-				if ( courant == null ) {
-					courant = new Produit();
-				}
-				return courant;
-			}
-		
-		
-		// Initialisaitons
-		
-		public String actualiserCourant() {
-			if ( courant != null ) {
-				DtoProduit dto = serviceProduit.retrouver( courant.getId() ); 
-				if ( dto == null ) {
-					UtilJsf.messageError( "Le produit demandé n'existe pas" );
-					return "test/liste";
-				} else {
-					courant = mapper.map( dto );
-				}
-			}
-			return null;
+		return listeUser;
+	}
+
+	public Produit getCourant() {
+		if (courant == null) {
+			courant = new Produit();
 		}
-		
-		
-		// Actions
-		
-		public String validerMiseAJour() {
-			try {
-				if ( courant.getId() == null) {
-					serviceProduit.inserer( mapper.map(courant) );
-				} else {
-					serviceProduit.modifier( mapper.map(courant) );
-				}
-				UtilJsf.messageInfo( "Mise à jour effectuée avec succès." );
+		return courant;
+	}
+
+	// Initialisaitons
+
+	public void setCourant(Produit courant) {
+		this.courant = courant;
+	}
+
+	public String actualiserCourant() {
+		if (courant != null) {
+			DtoProduit dto = serviceProduit.retrouver(courant.getId());
+			if (dto == null) {
+				UtilJsf.messageError("Le produit demandé n'existe pas");
 				return "liste";
-			} catch (ExceptionValidation e) {
-				UtilJsf.messageError(e);
-				return null;
+			} else {
+				courant = mapper.map(dto);
 			}
 		}
-		
-		public String supprimer( Produit item ) {
-			try {
-				serviceProduit.supprimer( item.getId() );
-				liste.remove(item);
-				UtilJsf.messageInfo( "Suppression effectuée avec succès." );
-			} catch (ExceptionValidation e) {
-				UtilJsf.messageError( e ); 
+		return null;
+	}
+
+	// Actions
+
+	public String validerMiseAJour() {
+		try {
+			if (courant.getId() == null) {
+				courant.setCompte(connexion.getCompteActif());
+				serviceProduit.inserer(mapper.map(courant));
+			} else {
+				serviceProduit.modifier(mapper.map(courant));
 			}
+			UtilJsf.messageInfo("Mise à jour effectuée avec succès.");
+			return "liste";
+		} catch (ExceptionValidation e) {
+			UtilJsf.messageError(e);
 			return null;
 		}
+	}
+
+	public String supprimer(Produit item) {
+		try {
+			serviceProduit.supprimer(item.getId());
+			liste.remove(item);
+			UtilJsf.messageInfo("Suppression effectuée avec succès.");
+		} catch (ExceptionValidation e) {
+			UtilJsf.messageError(e);
+		}
+		return null;
+	}
 
 }

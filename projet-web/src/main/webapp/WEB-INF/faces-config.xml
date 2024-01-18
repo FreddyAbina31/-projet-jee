@@ -27,6 +27,14 @@
    <from-outcome>listeUtilisateur</from-outcome>
    <to-view-id>/pages/produit/listeUtilisateur.xhtml</to-view-id>
   </navigation-case>
+  <navigation-case>
+   <from-outcome>formulaireProduit</from-outcome>
+   <to-view-id>/pages/produit/formulaire.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>enchere</from-outcome>
+   <to-view-id>/pages/produit/enchere.xhtml</to-view-id>
+  </navigation-case>
  </navigation-rule>
  <application/>
 </faces-config>

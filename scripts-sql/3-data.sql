@@ -38,8 +38,8 @@ INSERT INTO Enchere (prix, Id_compte) VALUES
   (25.00, 1);
 
 -- Ajouter des données à la table Produit en utilisant les identifiants d'enchères générés
-INSERT INTO Produit (Nom, Photo, Description, Prix_minimal, date_debut_enchere, date_fin_enchere, heure_debut_enchere, heure_fin_enchere, flag, Id_compte, Id_enchere) VALUES
-  ('Produit1', 'produit1.jpg', 'Description du produit 1', 10.00, '2024-01-20', '2024-01-25', '09:00:00', '17:00:00', 'En cours', 1, 1),
-  ('Produit2', 'produit2.jpg', 'Description du produit 2', 15.00, '2024-01-22', '2024-01-28', '10:00:00', '18:00:00', 'En cours', 1, 2),
-  ('Produit3', 'produit3.jpg', 'Description du produit 3', 20.00, '2024-01-25', '2024-01-30', '11:00:00', '19:00:00', 'En cours', 2, 3),
-  ('Produit4', 'produit4.jpg', 'Description du produit 4', 25.00, '2024-01-28', '2024-02-02', '12:00:00', '20:00:00', 'En cours', 2, 4);
+INSERT INTO Produit (Nom, Photo, Description, Prix_minimal, date_debut_enchere, date_fin_enchere, heure_debut_enchere, heure_fin_enchere, flag, vente, Id_compte, Id_enchere) VALUES
+  ('Produit1', 'produit1.jpg', 'Description du produit 1', 10.00, '2024-01-20', '2024-01-25', '09:00:00', '17:00:00', 'en vente',true, 1, 1),
+  ('Produit2', 'produit2.jpg', 'Description du produit 2', 15.00, '2024-01-22', '2024-01-28', '10:00:00', '18:00:00', 'en vente', true, 1, 2),
+  ('Produit3', 'produit3.jpg', 'Description du produit 3', 20.00, '2024-01-25', '2024-01-30', '11:00:00', '19:00:00', 'en vente', true, 2, 3),
+  ('Produit4', 'produit4.jpg', 'Description du produit 4', 25.00, '2024-01-28', '2024-02-02', '12:00:00', '20:00:00', 'bloque', false, 2, 4);

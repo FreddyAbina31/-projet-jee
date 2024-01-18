@@ -8,14 +8,9 @@ import java.util.List;
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
-import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
-import javax.transaction.Transactional.TxType;
-
-import org.hibernate.validator.HibernateValidator;
 
 import projet.ejb.data.Compte;
 import projet.ejb.dao.IDaoCompte;

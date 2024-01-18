@@ -1,5 +1,6 @@
 package projet.ejb.data;
 
+import javax.enterprise.inject.Model;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Time;
@@ -13,7 +14,6 @@ import java.util.Date;
 @Entity
 @Table(name = "produit")
 public class Produit {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idproduit")
@@ -27,6 +27,8 @@ public class Produit {
 	@Column(name="date_fin_enchere")
 	private Date dateFinEnchere;
 
+	private boolean vente;
+	
 	private String description;
 
 	private String flag;
@@ -44,7 +46,7 @@ public class Produit {
 	@Column(name="prix_minimal")
 	private BigDecimal prixMinimal;
 
-	@OneToOne(mappedBy = "produit", cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "produit", cascade = CascadeType.ALL, optional = true)
     private Enchere enchere;
 
 	@ManyToOne
@@ -135,11 +137,16 @@ public class Produit {
 	}
 
 	public Enchere getEnchere() {
+		if(enchere == null)
+			return new Enchere();
 		return enchere;
 	}
 
 	public void setEnchere(Enchere enchere) {
-		this.enchere = enchere;
+	    if (enchere != null) {
+	        enchere.setProduit(this);
+	    }
+	    this.enchere = enchere;
 	}
 
 	public Compte getCompte() {
@@ -148,6 +155,14 @@ public class Produit {
 
 	public void setCompte(Compte compte) {
 		this.compte = compte;
+	}
+
+	public boolean isVente() {
+		return vente;
+	}
+
+	public void setVente(boolean vente) {
+		this.vente = vente;
 	}
 
 }

@@ -23,6 +23,14 @@
     NAME="output5" PATH="/pages/produit/listeUtilisateur.xhtml"
     TARGET="rules:#pages#produit#listeUtilisateur.xhtml"
     TITLE="listeUtilisateur" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="formulaireProduit::#pages#produit#formulaire.xhtml"
+    NAME="output6" PATH="/pages/produit/formulaire.xhtml"
+    TARGET="rules:#pages#produit#formulaire.xhtml"
+    TITLE="formulaireProduit" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="enchere::#pages#produit#enchere.xhtml"
+    NAME="output7" PATH="/pages/produit/enchere.xhtml"
+    TARGET="rules:#pages#produit#enchere.xhtml" TITLE="enchere" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#pages#info.xhtml" PATH="/pages/info.xhtml"
@@ -39,5 +47,11 @@
   model-entity="JSFProcessGroup" persistent="true"/>
  <PROCESS-ITEM NAME="rules:#pages#produit#listeUtilisateur.xhtml"
   PATH="/pages/produit/listeUtilisateur.xhtml" SHAPE="320,360,50,25"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#pages#produit#formulaire.xhtml"
+  PATH="/pages/produit/formulaire.xhtml" SHAPE="328,432,50,25"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#pages#produit#enchere.xhtml"
+  PATH="/pages/produit/enchere.xhtml" SHAPE="320,488,50,25"
   model-entity="JSFProcessGroup" persistent="true"/>
 </PROCESS>

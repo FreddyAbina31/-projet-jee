@@ -1,45 +1,62 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <ui:composition template="/template/page-standard.xhtml"
-     xmlns="http://www.w3.org/1999/xhtml"
-     xmlns:h="http://java.sun.com/jsf/html"
-     xmlns:f="http://java.sun.com/jsf/core"
-     xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-    <h:head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>Produits</title>
-        <!-- Inclure Bootstrap -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
-        <ui:insert name="head" />
-    </h:head>
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Produits</title>
+		<!-- Inclure Bootstrap -->
+		<link rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+		<ui:insert name="head" />
+	</h:head>
 
-    <f:metadata>
-        <!-- Ajoutez des métadonnées si nécessaire -->
-    </f:metadata>
+	<ui:define name="titre">Mes Produits</ui:define>
 
-    <ui:define name="titre">Nos Produits</ui:define>
+	<ui:define name="contenu">
 
-    <ui:define name="contenu">
-        <div class="container">
-            <br/>
+		<h:form>
+			<div class="container">
+				<br />
 
-            <!-- Boucle pour afficher les produits -->
-            <div class="row">
-                <ui:repeat value="#{modelProduit.listeUtilisateur}" var="produit">
-                    <div class="col-md-3 mb-4">
-                        <div class="card">
-                            <img src="#{produit.photo}" class="card-img-top" alt="#{produit.nom}" />
-                            <div class="card-body">
-                                <h5 class="card-title">#{produit.nom}</h5>
-                                <p class="card-text">#{produit.description}</p>
-                                <p class="card-text">Prix: #{produit.prixMinimal} $</p>
-                            </div>
-                        </div>
-                    </div>
-                </ui:repeat>
-            </div>
+				<!-- Boucle pour afficher les produits -->
+				<div class="row">
+					<ui:repeat value="#{modelProduit.listeUtilisateur}" var="produit">
+						<div class="col-md-3 mb-4">
+							<div class="card">
+								<img src="#{produit.photo}" class="card-img-top"
+									alt="#{produit.nom}" />
+								<div class="card-body text-center">
+									<h5 class="card-title">#{produit.nom}</h5>
+									<p class="card-text">#{produit.description}</p>
+									<p class="card-text">Prix: #{produit.prixMinimal} $</p>
+									<p class="card-text">#{produit.flag}</p>
+									<h:link outcome="formulaireProduit"
+										styleClass="btn btn-primary" value="Modifier">
+										<f:param name="id" value="#{produit.id}" />
+									</h:link>
+									<h:commandButton action="#{modelProduit.supprimer(produit)}"
+										value="Supprimer"
+										onclick="return confirm('Confirmez-vous la suppression ?')"
+										styleClass="btn btn-danger">
+										<f:ajax render="@form" execute="@form" />
+									</h:commandButton>
+								</div>
+							</div>
+						</div>
+					</ui:repeat>
 
-        </div>
-    </ui:define>
+				</div>
+			</div>
+			<h:button value="Ajouter" outcome="formulaireProduit"
+				styleClass="btn btn-primary" />
+		</h:form>
+
+
+
+	</ui:define>
 
 </ui:composition>

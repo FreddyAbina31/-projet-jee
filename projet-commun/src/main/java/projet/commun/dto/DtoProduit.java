@@ -17,6 +17,8 @@ public class DtoProduit implements Serializable {
 	private String description;
 
 	private String flag;
+	
+	private boolean vente;
 
 	private Time heureDebutEnchere;
 
@@ -33,7 +35,7 @@ public class DtoProduit implements Serializable {
 	private DtoEnchere enchere;	
 
 
-	public DtoProduit(Integer id, Date dateDebutEnchere, Date dateFinEnchere, String description, String flag,
+	public DtoProduit(Integer id, Date dateDebutEnchere, Date dateFinEnchere, String description, String flag, boolean vente,
 			Time heureDebutEnchere, Time heureFinEnchere, String nom, String photo, BigDecimal prixMinimal,
 			DtoEnchere encheres, DtoCompte compte) {
 		super();
@@ -131,7 +133,7 @@ public class DtoProduit implements Serializable {
 		this.prixMinimal = prixMinimal;
 	}
 
-	public DtoEnchere getEncheres() {
+	public DtoEnchere getEnchere() {
 		return enchere;
 	}
 
@@ -147,4 +149,11 @@ public class DtoProduit implements Serializable {
 		this.compte = compte;
 	}
 
+	public boolean isVente() {
+		return vente;
+	}
+
+	public void setVente(boolean vente) {
+		this.vente = vente;
+	}
 }

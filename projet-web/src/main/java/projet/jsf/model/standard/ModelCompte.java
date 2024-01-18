@@ -24,6 +24,8 @@ public class ModelCompte implements Serializable {
 	// Champs
 
 	private List<Compte> liste;
+	
+	private List<Compte> listeAvecNull;
 
 	private Compte courant;
 
@@ -43,6 +45,15 @@ public class ModelCompte implements Serializable {
 			}
 		}
 		return liste;
+	}
+	
+	public List<Compte> getListeAvecNull() {
+		if (listeAvecNull == null) {
+			listeAvecNull = new ArrayList<>();
+			listeAvecNull.add(null);
+			listeAvecNull.addAll(getListe());
+		}
+		return listeAvecNull;
 	}
 
 	public Compte getCourant() {
